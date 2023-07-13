@@ -45,3 +45,19 @@ get("/dice/5/4") do
 	
   erb(:five_four)
 end
+
+get("/dynamic/:alice/:sides") do # any name doesn't have to be zebra : makes it dynamic
+  @num_dice = params.fetch("alice").to_i # for getting user input
+  @dice_sides = params.fetch("sides").to_i
+
+  @rolls = []
+
+  @num_dice.times do
+    die = rand(1..@dice_sides)
+
+    @rolls.push(die)
+  end
+
+  erb(:flexible)
+
+end

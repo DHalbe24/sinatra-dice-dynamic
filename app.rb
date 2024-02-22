@@ -61,3 +61,15 @@ get("/dynamic/:alice/:sides") do # any name doesn't have to be zebra : makes it 
   erb(:flexible)
 
 end
+
+get("/dice/50/6") do
+  @rolls = []
+
+  50.times do
+    die = rand(1..6)
+
+    @rolls.push(die)
+  end
+
+  erb(:flexible)
+end
